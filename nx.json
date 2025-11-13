@@ -64,6 +64,44 @@
       "linter": "eslint",
       "style": "scss",
       "unitTestRunner": "jest"
+    },
+    "@nx/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nx/angular:component": {
+      "style": "scss"
     }
-  }
+  },
+  "depConstraints": [
+    {
+      "sourceTag": "type:feature",
+      "onlyDependOnLibsWithTags": [
+        "type:ui",
+        "type:data-access",
+        "scope:shared"
+      ]
+    },
+    {
+      "sourceTag": "type:ui",
+      "onlyDependOnLibsWithTags": [
+        "type:ui",
+        "type:util",
+        "type:models",
+        "scope:shared"
+      ]
+    },
+    {
+      "sourceTag": "type:data-access",
+      "onlyDependOnLibsWithTags": ["type:models", "type:util", "scope:shared"]
+    },
+    {
+      "sourceTag": "scope:surveys",
+      "onlyDependOnLibsWithTags": ["scope:surveys", "scope:shared"]
+    },
+    {
+      "sourceTag": "scope:shared",
+      "onlyDependOnLibsWithTags": ["scope:shared"]
+    }
+  ]
 }
