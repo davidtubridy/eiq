@@ -12,7 +12,6 @@
       "options": {
         "outputPath": "dist/apps/eiq",
         "browser": "apps/eiq/src/main.ts",
-        "polyfills": ["zone.js"],
         "tsConfig": "apps/eiq/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
