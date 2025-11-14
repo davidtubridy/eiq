@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'lib-survey-list',
+  selector: 'eiq-survey-list',
   imports: [],
   templateUrl: './survey-list.html',
   styleUrl: './survey-list.scss',
