@@ -19,7 +19,7 @@
       "@eiq/models": ["libs/shared/models/src/index.ts"],
       "@eiq/data-access": ["libs/surveys/data-access/src/index.ts"],
       "@eiq/survey-list": ["libs/surveys/survey-list/src/index.ts"],
-      "@eiq/survey-details": ["libs/surveys/survey-details/src/index.ts"]
+      "@eiq/survey-notepad": ["libs/surveys/survey-notepad/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

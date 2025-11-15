@@ -13,8 +13,8 @@ export const appRoutes: Routes = [
       {
         path: ':id',
         loadComponent: () =>
-          import('@eiq/survey-details').then((m) => m.SurveyDetails),
-        title: 'Survey Details',
+          import('@eiq/survey-notepad').then((m) => m.SurveyNotepad),
+        title: 'Survey Notepad',
       },
     ],
   },
