@@ -1,20 +1,14 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  signal,
-  output,
-} from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
+import { Component, ChangeDetectionStrategy, output } from '@angular/core';
 
 @Component({
   selector: 'eiq-survey-toolbar',
-  imports: [MatIconModule],
+  imports: [],
   templateUrl: './survey-toolbar.html',
   styleUrl: './survey-toolbar.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SurveyToolbar {
-  public search = output<string>();
+  public surveyFilter = output<string>();
   public filter = output<void>();
   public createSurvey = output<void>();
 
@@ -23,6 +17,6 @@ export class SurveyToolbar {
   protected onSearch(event: Event) {
     const target = event.target as HTMLInputElement;
     this.searchQuery = target.value;
-    this.search.emit(this.searchQuery);
+    this.surveyFilter.emit(this.searchQuery);
   }
 }

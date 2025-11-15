@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class SurveyCard {
   private router = inject(Router);
-  protected readonly survey = input.required<Survey>();
+  public readonly survey = input.required<Survey>();
 
   protected navigateToSurvey(surveyId: string) {
     this.router.navigate(['/surveys', surveyId]);

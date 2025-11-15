@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { Header } from '@eiq/ui';
 @Component({
   imports: [RouterModule, Header],
-  selector: 'app-root',
+  selector: 'eiq-root',
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })

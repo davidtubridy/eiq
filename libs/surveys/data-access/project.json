@@ -2,7 +2,7 @@
   "name": "data-access",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/surveys/data-access/src",
-  "prefix": "lib",
+  "prefix": "eiq",
   "projectType": "library",
   "tags": ["scope:surveys", "type:data-access"],
   "targets": {

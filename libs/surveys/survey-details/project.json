@@ -2,7 +2,7 @@
   "name": "survey-details",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/surveys/survey-details/src",
-  "prefix": "lib",
+  "prefix": "eiq",
   "projectType": "library",
   "tags": ["scope:surveys", "type:feature"],
   "targets": {
