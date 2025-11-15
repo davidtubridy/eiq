@@ -29,7 +29,6 @@ export class SurveyList implements OnInit {
   protected error = signal<string | null>(null);
   protected surveys = computed(() => {
     const filter = this.filterText().toLowerCase().trim();
-    const all = this.allSurveys();
 
     if (!filter) {
       return this.allSurveys();

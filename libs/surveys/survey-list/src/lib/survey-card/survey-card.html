@@ -1,12 +1,18 @@
-<div class="survey-card" (click)="navigateToSurvey(survey().id)">
+<div
+  class="survey-card"
+  (click)="navigateToSurvey(survey().id)"
+  (keydown.enter)="navigateToSurvey(survey().id)"
+  role="button"
+  tabindex="0"
+>
   <div class="card-header">
     <h3 class="card-title">{{ survey().title }}</h3>
   </div>
   <p class="card-description">{{ survey().description }}</p>
   <div class="card-footer">
     <div class="question">
-      <span
-        ><span class="question-count">{{ survey().questions.length }}</span>
+      <span>
+        <span class="question-count">{{ survey().questions.length }}</span>
         {{ survey().questions.length === 1 ? 'question': 'questions' }}
       </span>
     </div>

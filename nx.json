@@ -84,16 +84,11 @@
     },
     {
       "sourceTag": "type:ui",
-      "onlyDependOnLibsWithTags": [
-        "type:ui",
-        "type:util",
-        "type:models",
-        "scope:shared"
-      ]
+      "onlyDependOnLibsWithTags": ["type:ui", "type:models", "scope:shared"]
     },
     {
       "sourceTag": "type:data-access",
-      "onlyDependOnLibsWithTags": ["type:models", "type:util", "scope:shared"]
+      "onlyDependOnLibsWithTags": ["type:models", "scope:shared"]
     },
     {
       "sourceTag": "scope:surveys",

@@ -2,7 +2,7 @@
   "name": "survey-list",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/surveys/survey-list/src",
-  "prefix": "lib",
+  "prefix": "eiq",
   "projectType": "library",
   "tags": ["scope:surveys", "type:feature"],
   "targets": {

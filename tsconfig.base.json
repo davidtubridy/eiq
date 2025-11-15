@@ -16,7 +16,6 @@
     "baseUrl": ".",
     "paths": {
       "@eiq/ui": ["libs/shared/ui/src/index.ts"],
-      "@eiq/util": ["libs/shared/util/src/index.ts"],
       "@eiq/models": ["libs/shared/models/src/index.ts"],
       "@eiq/data-access": ["libs/surveys/data-access/src/index.ts"],
       "@eiq/survey-list": ["libs/surveys/survey-list/src/index.ts"],
