@@ -1,1 +1,29 @@
-<p>SurveyList works!</p>
+<div class="survey-list-container">
+  <div class="page-header">
+    <h1 class="page-title">Surveys</h1>
+    <p class="page-subtitle">
+      Create, manage, and analyze your customer feedback surveys
+    </p>
+  </div>
+  @if(!loading()){
+  <eiq-survey-toolbar (search)="filterSurveys($event)" />
+  } @if (loading()) {
+  <div class="loading-state" role="status" aria-live="polite">
+    <p>Loading surveys...</p>
+  </div>
+  } @else if (error()) {
+  <div class="error-state" role="alert" aria-live="assertive">
+    <p>Error loading surveys: {{ error() }}</p>
+  </div>
+  } @else if (surveys().length === 0) {
+  <div class="empty-state">
+    <p>No surveys available.</p>
+  </div>
+  } @else {
+  <div class="survey-grid" role="list">
+    @for (survey of surveys(); track survey.id) {
+    <eiq-survey-card [survey]="survey"> </eiq-survey-card>
+    }
+  </div>
+  }
+</div>

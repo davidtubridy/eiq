@@ -20,7 +20,10 @@
             "input": "apps/eiq/public"
           }
         ],
-        "styles": ["apps/eiq/src/styles.scss"]
+        "styles": [
+          "apps/eiq/src/styles.scss",
+          "libs/shared/ui/src/lib/styles/index.scss"
+        ]
       },
       "configurations": {
         "production": {

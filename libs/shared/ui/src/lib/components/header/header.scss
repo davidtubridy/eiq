@@ -1,0 +1,30 @@
+:host {
+  display: block;
+  width: 100%;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #e0e0e0;
+  height: 3.75rem;
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.25rem;
+  height: 100%;
+}
+
+.header-title {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #555;
+  margin: 0;
+}
+
+.header-title a.title-link {
+  color: inherit;
+  text-decoration: none;
+  border-radius: 0.125rem;
+}
