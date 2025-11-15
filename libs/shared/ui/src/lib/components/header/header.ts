@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -8,5 +8,5 @@ import { RouterModule } from '@angular/router';
   styleUrl: './header.scss',
 })
 export class Header {
-  readonly title = 'Empathy IQ';
+  protected readonly title = input<string>('Empathy IQ');
 }

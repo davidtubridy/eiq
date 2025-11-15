@@ -1,0 +1,90 @@
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.search-box {
+  flex: 1;
+  min-width: 250px;
+  max-width: 400px;
+  position: relative;
+}
+
+.search-box-input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border: 1px solid #d0d0d0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+  background: white;
+  color: #1a1a1a;
+}
+
+.search-box-input:focus {
+  outline: none;
+  border-color: #2b7de9;
+  box-shadow: 0 0 0 3px rgba(43, 125, 233, 0.1);
+}
+
+.search-box-icon {
+  position: absolute;
+  left: 0.875rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666666;
+}
+
+.toolbar-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.create-survey-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.create-survey-button {
+  background: #2b7de9;
+  color: white;
+}
+
+.create-survey-button:hover {
+  background: #1a6ad6;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(43, 125, 233, 0.3);
+}
+
+@media (max-width: 768px) {
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-box {
+    max-width: calc(100% - 3.5rem);
+  }
+
+  .toolbar-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .create-survey-button {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,74 @@
+.survey-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.75rem;
+  border: 1px solid #d0d0d0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.survey-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border-color: #2b7de9;
+}
+
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.card-menu {
+  color: #999999;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.card-menu:hover {
+  color: #333333;
+}
+
+.card-title {
+  font-size: 1.125rem;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-description {
+  font-size: 0.9rem;
+  color: #666666;
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.question {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #666666;
+}
+
+.question-count {
+  color: #1a1a1a;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e8e8e8;
+}
