@@ -1,0 +1,54 @@
+<div
+  class="list-item"
+  [class.selected]="isSelected()"
+  [class.editing]="isEditing()"
+  [class.type-header]="type() === 'header'"
+  [class.type-regular]="type() === 'regular'"
+  [class.type-list]="type() === 'list'"
+  role="listitem"
+>
+  @if (prefix()) {
+  <span class="item-prefix" aria-hidden="true">{{ prefix() }}</span>
+  } @if (!isEditing()) {
+  <button
+    type="button"
+    class="item-text"
+    (click)="startEdit.emit()"
+    [attr.aria-label]="'Edit: ' + text()"
+  >
+    {{ text() }}
+  </button>
+
+  @if (canDelete()) {
+  <button
+    mat-icon-button
+    type="button"
+    class="delete-button"
+    (click)="handleDelete($event)"
+    [attr.aria-label]="'Delete: ' + text()"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+  } } @else {
+  <input
+    type="text"
+    class="item-input"
+    [value]="editText()"
+    (input)="editText.set($event.target.value)"
+    (blur)="handleSave()"
+    (keydown)="handleKeyPress($event)"
+    [placeholder]="placeholder()"
+    aria-label="Edit item"
+  />
+
+  <button
+    mat-icon-button
+    type="button"
+    class="save-button"
+    (click)="handleSave()"
+    aria-label="Save changes"
+  >
+    <mat-icon>check</mat-icon>
+  </button>
+  }
+</div>
