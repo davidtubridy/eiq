@@ -1,44 +1,38 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Survey, SurveyList } from '@eiq/models';
 
 @Injectable({ providedIn: 'root' })
 export class SurveyService {
   private http = inject(HttpClient);
+  private apiUrl = process.env['API_URL'] as string;
+  private apiKey = process.env['X_API_KEY'] as string;
+  private surveyEndpoint = `${this.apiUrl}/survey`;
 
-  testData = [
-    {
-      id: '691671a1383f5247a64592de',
-      title: 'Customer Feedback Survey',
-      description: 'Test description',
-      questions: [
-        {
-          questionId: 1,
-          questionText: 'How satisfied were you with your product?',
-          mandatoryInd: true,
-          questionType: 0,
-          options: [
-            'Very Satisfied',
-            'Satisfied',
-            'Neutral',
-            'Unsatisfied',
-            'Very Unsatisfied',
-          ],
-          randomizeOptionsInd: false,
-          cards: [],
-          programmerNotes: 'Satisfaction Question',
-          instructions: 'Please select only one option.',
-        },
-      ],
-    },
-  ];
+  private headers = new HttpHeaders({
+    'X-API-KEY': this.apiKey,
+    'Content-Type': 'application/json',
+  });
 
   public getSurveys(): Observable<SurveyList> {
-    return of(this.testData);
+    const url: string = this.surveyEndpoint;
+    return this.http.get<SurveyList>(url, { headers: this.headers });
   }
 
   public getSurveyById(id: string): Observable<Survey> {
-    return of(this.testData[0]);
+    const url = `${this.surveyEndpoint}/${id}`;
+    return this.http.get<Survey>(url, { headers: this.headers });
+  }
+
+  public createSurvey(survey: Omit<Survey, 'id'>) {
+    return this.http.post<Survey>(this.surveyEndpoint, survey, {
+      headers: this.headers,
+    });
+  }
+
+  public updateSurvey(surveyId: string, survey: Survey): Observable<Survey> {
+    const url = `${this.surveyEndpoint}/${surveyId}`;
+    return this.http.put<Survey>(url, survey, { headers: this.headers });
   }
 }
