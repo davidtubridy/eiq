@@ -26,8 +26,8 @@
         ],
         "define": {
           "process.env.NODE_ENV": "'development'",
-          "process.env.API_URL": "'https://techtestapi1.azurewebsites.net'",
-          "process.env.X_API_KEY": "'david.tubridy1@gmail.com'"
+          "process.env.API_URL": "''",
+          "process.env.X_API_KEY": "''"
         }
       },
       "configurations": {
