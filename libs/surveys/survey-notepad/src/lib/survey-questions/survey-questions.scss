@@ -9,19 +9,18 @@
 .question-card {
   margin-bottom: 1.25rem;
   background: eiq.$base-white;
-  border: 0.0625rem solid eiq.$gray-200;
-  border-radius: eiq.$border-radius-lg;
+  border: 1px solid eiq.$gray-300;
+  border-radius: 0.5rem;
   overflow: hidden;
-  box-shadow: eiq.$shadow-xs;
   transition: box-shadow eiq.$transition-standard;
+  box-shadow: 0px 1px 2px 0px #1018280f;
 
   &:hover {
-    box-shadow: eiq.$shadow-md;
+    border: 1px solid eiq.$brand-blue-600;
   }
 
   &:focus-within {
-    border-color: eiq.$brand-blue-600;
-    box-shadow: eiq.$shadow-focus;
+    border: 1px solid eiq.$brand-blue-600;
   }
 }
 
