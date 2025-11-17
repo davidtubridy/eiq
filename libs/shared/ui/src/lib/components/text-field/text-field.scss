@@ -35,6 +35,17 @@
     }
   }
 
+  &.type-question {
+    .item-text {
+      @include eiq.typography-question;
+    }
+
+    .item-input {
+      font-size: 1.125rem;
+      line-height: 0.875rem;
+    }
+  }
+
   &:hover .delete-button {
     opacity: 1;
   }

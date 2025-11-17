@@ -48,19 +48,17 @@
       </div>
 
       <div class="question-content">
-        <div class="question-text-wrapper">
-          <eiq-text-field
-            [text]="questionControl.get('questionText')?.value"
-            [isEditing]="isEditingQuestionText(i)"
-            [isSelected]="false"
-            [canDelete]="false"
-            [id]="'question-title-' + questionControl.get('questionId')?.value"
-            (startEdit)="startEditingQuestionText(i)"
-            (saveEdit)="saveQuestionText(i, $event)"
-            (cancelEdit)="cancelEditingQuestionText()"
-            [type]="'regular'"
-          />
-        </div>
+        <eiq-text-field
+          [text]="questionControl.get('questionText')?.value"
+          [isEditing]="isEditingQuestionText(i)"
+          [isSelected]="false"
+          [canDelete]="false"
+          [id]="'question-title-' + questionControl.get('questionId')?.value"
+          (startEdit)="startEditingQuestionText(i)"
+          (saveEdit)="saveQuestionText(i, $event)"
+          (cancelEdit)="cancelEditingQuestionText()"
+          [type]="'question'"
+        />
 
         @if (showQuestionOptions(i) && getQuestionOptions(i); as options) {
         <ul
