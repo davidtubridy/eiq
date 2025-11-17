@@ -1,0 +1,149 @@
+<div
+  class="questions-container"
+  aria-label="Survey questions"
+  [formGroup]="surveyForm()"
+>
+  @if (questionsArray(); as questions) {
+  <div formArrayName="questions">
+    @for ( questionControl of questions.controls; track
+    trackByQuestionId($index, questionControl); let i = $index ) {
+    <div
+      class="question-card"
+      [formGroupName]="i"
+      [attr.aria-labelledby]="'question-title-' + questionControl.get('questionId')?.value"
+    >
+      <div class="question-header">
+        <div class="question-header-left">
+          <span
+            class="question-number"
+            [id]="'question-' + questionControl.get('questionId')?.value"
+            aria-label="Question {{ getQuestionNumber(i) }}"
+          >
+            Q{{ getQuestionNumber(i) }}
+          </span>
+          <eiq-dropdown-menu
+            [options]="questionTypeOptions"
+            [selected]="questionControl.get('questionType')?.value"
+            [searchPlaceholder]="'Search question types'"
+            [ariaLabel]="'Select question type for question ' + getQuestionNumber(i)"
+            (optionSelected)="changeQuestionType(i, $event)"
+          />
+        </div>
+        <div
+          class="question-actions"
+          role="group"
+          aria-label="Question actions"
+        >
+          <button
+            type="button"
+            class="action-button action-button-danger"
+            [disabled]="!canDeleteQuestion()"
+            (click)="deleteQuestion(i)"
+            [attr.aria-label]="'Delete question ' + getQuestionNumber(i)"
+            title="Delete question"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <div class="question-content">
+        <div class="question-text-wrapper">
+          <eiq-text-field
+            [text]="questionControl.get('questionText')?.value"
+            [isEditing]="isEditingQuestionText(i)"
+            [isSelected]="false"
+            [canDelete]="false"
+            [ariaLabel]="'Edit question text: ' + questionControl.get('questionText')?.value"
+            [id]="'question-title-' + questionControl.get('questionId')?.value"
+            (startEdit)="startEditingQuestionText(i)"
+            (saveEdit)="saveQuestionText(i, $event)"
+            (cancelEdit)="cancelEditingQuestionText()"
+            [type]="'regular'"
+          />
+        </div>
+
+        @if (showQuestionOptions(i) && getQuestionOptions(i); as options) {
+        <ul
+          class="options-list"
+          role="list"
+          [attr.aria-label]="'Options for question ' + getQuestionNumber(i)"
+        >
+          @for ( optionControl of options.controls; track
+          trackByOptionIndex($index); let optionIndex = $index ) {
+          <li class="option-item">
+            <eiq-text-field
+              [text]="optionControl.value"
+              [isSelected]="false"
+              [isEditing]="getEditingOptionIndex(i) === optionIndex"
+              [canDelete]="canDeleteOptions(i)"
+              [prefix]="'-'"
+              [ariaLabel]="'Option ' + (optionIndex + 1) + ': ' + optionControl.value"
+              (startEdit)="startEditingOption(i, optionIndex)"
+              (saveEdit)="saveOption(i, optionIndex, $event)"
+              (cancelEdit)="cancelEditing()"
+              (deleteItem)="deleteOption(i, optionIndex)"
+              [type]="'list'"
+            />
+          </li>
+          }
+
+          <li>
+            <button
+              type="button"
+              class="add-button"
+              (click)="addChoice(i)"
+              [attr.aria-label]="'Add a new choice to question ' + getQuestionNumber(i)"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="20"
+                width="20"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+              </svg>
+              <span>Add choice</span>
+            </button>
+          </li>
+        </ul>
+        }
+
+        <div
+          class="question-controls"
+          role="group"
+          [attr.aria-label]="'Settings for question ' + getQuestionNumber(i)"
+        >
+          @if (showQuestionOptions(i)) {
+          <eiq-toggle-switch
+            [checked]="questionControl.get('randomizeOptionsInd')?.value"
+            [label]="'Randomize options'"
+            [ariaLabel]="'Randomize options for question ' + getQuestionNumber(i)"
+            (checkedChange)="toggleRandomizeOptions(i)"
+          />
+          }
+
+          <eiq-toggle-switch
+            [checked]="questionControl.get('mandatoryInd')?.value"
+            [label]="'Required'"
+            [ariaLabel]="(questionControl.get('mandatoryInd')?.value ? 'Make optional' : 'Make required') + ' question ' + getQuestionNumber(i)"
+            (checkedChange)="toggleRequired(i)"
+          />
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+
+  <button
+    type="button"
+    class="add-button"
+    (click)="addQuestion()"
+    aria-label="Add a new question to the survey"
+  >
+    <mat-icon>add</mat-icon>
+    Add question
+  </button>
+  }
+</div>
