@@ -1,55 +1,27 @@
-$primary-color: #1570ef;
-$primary-hover: #0f5dc4;
-$error-color: #ef4444;
-$border-color: #e5e7eb;
-$border-radius: 8px;
-$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-$transition-fast: 150ms ease-in-out;
-$transition-normal: 250ms ease-in-out;
-
-@mixin flex-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-@mixin button-reset {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  font: inherit;
-  color: inherit;
-}
-
-@mixin focus-ring {
-  outline: 2px solid $primary-color;
-  outline-offset: 2px;
-}
+@use '@eiq/styles' as eiq;
 
 .questions-container {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .question-card {
-  margin-bottom: 20px;
-  background: white;
-  border: 1px solid $border-color;
-  border-radius: $border-radius;
+  margin-bottom: 1.25rem;
+  background: eiq.$base-white;
+  border: 0.0625rem solid eiq.$gray-200;
+  border-radius: eiq.$border-radius-lg;
   overflow: hidden;
-  box-shadow: $shadow-sm;
-  transition: box-shadow $transition-normal;
+  box-shadow: eiq.$shadow-xs;
+  transition: box-shadow eiq.$transition-standard;
 
   &:hover {
-    box-shadow: $shadow-md;
+    box-shadow: eiq.$shadow-md;
   }
 
   &:focus-within {
-    border-color: $primary-color;
-    box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
+    border-color: eiq.$brand-blue-600;
+    box-shadow: eiq.$shadow-focus;
   }
 }
 
@@ -57,13 +29,13 @@ $transition-normal: 250ms ease-in-out;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 24px;
+  padding: 1rem 1.5rem;
 }
 
 .question-header-left {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 0.75rem;
   flex: 1;
   min-width: 0;
 }
@@ -72,12 +44,12 @@ $transition-normal: 250ms ease-in-out;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 40px;
-  background: #4b5563;
-  color: white;
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 14px;
+  min-width: 2.5rem;
+  background: eiq.$gray-600;
+  color: eiq.$base-white;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
   font-weight: 600;
   flex-shrink: 0;
 }
@@ -85,26 +57,26 @@ $transition-normal: 250ms ease-in-out;
 .question-actions {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 0.25rem;
   flex-shrink: 0;
 }
 
 .action-button {
-  @include button-reset;
-  @include flex-center;
-  width: 32px;
-  height: 32px;
-  border-radius: 6px;
-  color: #6b7280;
-  transition: all $transition-fast;
+  @include eiq.button-reset;
+  @include eiq.flex-center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.375rem;
+  color: eiq.$gray-500;
+  transition: all eiq.$transition-fast;
 
   &:hover:not(:disabled) {
-    background: #e5e7eb;
-    color: #374151;
+    background: eiq.$gray-200;
+    color: eiq.$gray-700;
   }
 
   &:focus-visible {
-    @include focus-ring;
+    @include eiq.focus-ring;
   }
 
   &:disabled {
@@ -113,36 +85,36 @@ $transition-normal: 250ms ease-in-out;
   }
 
   &.action-button-danger {
-    color: $error-color;
+    color: eiq.$red-500;
 
     &:hover:not(:disabled) {
-      background: #fee2e2;
-      color: darken($error-color, 10%);
+      background: eiq.$red-50;
+      color: eiq.$red-700;
     }
   }
 
   svg {
-    width: 20px;
-    height: 20px;
+    width: 1.25rem;
+    height: 1.25rem;
   }
 }
 
 .question-content {
-  min-height: 170px;
-  padding: 24px;
+  min-height: 10.625rem;
+  padding: 1.5rem;
 }
 
 .question-text-wrapper {
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 .options-list {
   list-style: none;
   padding: 0;
-  margin: 0 0 24px 0;
+  margin: 0 0 1.5rem 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .option-item {
@@ -152,7 +124,7 @@ $transition-normal: 250ms ease-in-out;
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateY(-8px);
+    transform: translateY(-0.5rem);
   }
   to {
     opacity: 1;
@@ -161,28 +133,28 @@ $transition-normal: 250ms ease-in-out;
 }
 
 .add-button {
-  @include button-reset;
+  @include eiq.button-reset;
   display: flex;
   align-items: center;
-  gap: 8px;
-  color: $primary-color;
-  font-size: 14px;
+  gap: 0.5rem;
+  color: eiq.$brand-blue-600;
+  font-size: 0.875rem;
   font-weight: 500;
-  border-radius: 6px;
-  transition: all $transition-fast;
+  border-radius: 0.375rem;
+  transition: all eiq.$transition-fast;
 
   &:hover {
-    background: #f0f9ff;
-    color: $primary-hover;
+    background: eiq.$brand-blue-25;
+    color: eiq.$brand-blue-700;
   }
 
   &:focus-visible {
-    @include focus-ring;
+    @include eiq.focus-ring;
   }
 
   svg {
-    width: 20px;
-    height: 20px;
+    width: 1.25rem;
+    height: 1.25rem;
   }
 }
 
@@ -190,18 +162,18 @@ $transition-normal: 250ms ease-in-out;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 16px;
-  padding-top: 16px;
-  border-top: 1px solid $border-color;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 0.0625rem solid eiq.$gray-200;
   flex-wrap: wrap;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .question-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
-    padding: 16px;
+    gap: 0.75rem;
+    padding: 1rem;
   }
 
   .question-header-left {
@@ -214,33 +186,33 @@ $transition-normal: 250ms ease-in-out;
   }
 
   .question-content {
-    padding: 16px;
+    padding: 1rem;
   }
 
   .question-controls {
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    gap: 0.75rem;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 30rem) {
   .question-header {
-    padding: 12px;
+    padding: 0.75rem;
   }
 
   .question-content {
-    padding: 12px;
-    min-height: 170px;
+    padding: 0.75rem;
+    min-height: 10.625rem;
   }
 
   .action-button {
-    width: 28px;
-    height: 28px;
+    width: 1.75rem;
+    height: 1.75rem;
 
     svg {
-      width: 18px;
-      height: 18px;
+      width: 1.125rem;
+      height: 1.125rem;
     }
   }
 }

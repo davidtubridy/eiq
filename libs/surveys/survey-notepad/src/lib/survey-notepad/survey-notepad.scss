@@ -1,70 +1,43 @@
-$primary-color: #1570ef;
-$error-color: #ef4444;
-$border-color: #e5e7eb;
-$border-radius: 8px;
-$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-$transition-fast: 150ms ease-in-out;
-$transition-normal: 250ms ease-in-out;
-
-@mixin flex-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-@mixin button-reset {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  font: inherit;
-  color: inherit;
-}
-
-@mixin focus-ring {
-  outline: 2px solid $primary-color;
-  outline-offset: 2px;
-}
+@use '@eiq/styles' as eiq;
 
 .survey-container {
-  min-height: 400px;
-  max-width: 1200px;
+  min-height: 25rem;
+  max-width: 75rem;
   margin: 0 auto;
-  padding: 24px;
+  padding: 1.5rem;
 }
 
 .loading-state {
-  @include flex-center;
+  @include eiq.flex-center;
   flex-direction: column;
-  gap: 16px;
-  padding: 64px 24px;
+  gap: 1rem;
+  padding: 4rem 1.5rem;
   text-align: center;
 }
 
 .loading-message {
-  font-size: 16px;
-  color: #6b7280;
+  font-size: 1rem;
+  color: eiq.$gray-500;
   margin: 0;
 }
 
 .survey-content {
-  border: 1px solid $border-color;
-  border-radius: $border-radius;
-
-  padding: 30px;
+  border: 1px solid eiq.$gray-200;
+  border-radius: eiq.$border-radius-lg;
+  padding: 1.875rem;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 1.5rem;
 }
 
 .survey-header {
-  background: white;
-  border-radius: $border-radius;
-  padding: 24px;
+  background: eiq.$base-white;
+  border-radius: eiq.$border-radius-lg;
+  padding: 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 24px;
+  gap: 1.5rem;
 }
 
 .header-content {
@@ -72,24 +45,24 @@ $transition-normal: 250ms ease-in-out;
   min-width: 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .survey-container {
-    padding: 16px;
+    padding: 1rem;
   }
 
   .survey-header {
     flex-direction: column;
-    gap: 16px;
-    padding: 20px;
+    gap: 1rem;
+    padding: 1.25rem;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 30rem) {
   .survey-container {
-    padding: 12px;
+    padding: 0.75rem;
   }
 
   .survey-header {
-    padding: 16px;
+    padding: 1rem;
   }
 }

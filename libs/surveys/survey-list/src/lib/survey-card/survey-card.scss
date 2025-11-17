@@ -1,8 +1,10 @@
+@use '@eiq/styles' as eiq;
+
 .survey-card {
-  background: white;
-  border-radius: 12px;
+  background: eiq.$base-white;
+  border-radius: 0.75rem;
   padding: 1.75rem;
-  border: 1px solid #d0d0d0;
+  border: 1px solid eiq.$gray-300;
   transition: all 0.3s ease;
   cursor: pointer;
   overflow: hidden;
@@ -10,8 +12,8 @@
 
 .survey-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  border-color: #2b7de9;
+  box-shadow: eiq.$shadow-sm;
+  border-color: eiq.$brand-blue-600;
 }
 
 .card-header {
@@ -22,18 +24,18 @@
 }
 
 .card-menu {
-  color: #999999;
+  color: eiq.$gray-500;
   cursor: pointer;
   padding: 0.25rem;
 }
 
 .card-menu:hover {
-  color: #333333;
+  color: eiq.$gray-700;
 }
 
 .card-title {
   font-size: 1.125rem;
-  color: #1a1a1a;
+  color: eiq.$gray-900;
   margin-bottom: 0.5rem;
 
   white-space: nowrap;
@@ -43,7 +45,7 @@
 
 .card-description {
   font-size: 0.9rem;
-  color: #666666;
+  color: eiq.$gray-600;
   margin-bottom: 1.25rem;
   line-height: 1.5;
 
@@ -57,11 +59,11 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.85rem;
-  color: #666666;
+  color: eiq.$gray-600;
 }
 
 .question-count {
-  color: #1a1a1a;
+  color: eiq.$gray-900;
 }
 
 .card-footer {
@@ -70,5 +72,5 @@
   justify-content: space-between;
   margin-top: 1rem;
   padding-top: 1rem;
-  border-top: 1px solid #e8e8e8;
+  border-top: 1px solid eiq.$gray-200;
 }

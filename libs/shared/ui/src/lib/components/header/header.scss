@@ -1,11 +1,12 @@
+@use '@eiq/styles' as eiq;
+
 :host {
   display: block;
   width: 100%;
-  background-color: #ffffff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid #e0e0e0;
+  background-color: eiq.$base-white;
+  box-shadow: eiq.$shadow-xs;
+  border-bottom: 1px solid eiq.$gray-200;
   height: 3.75rem;
-  box-sizing: border-box;
 }
 
 .header {
@@ -18,9 +19,7 @@
 
 .header-title {
   font-size: 1.2rem;
-  font-weight: 400;
-  color: #555;
-  margin: 0;
+  color: eiq.$gray-900;
 }
 
 .header-title a.title-link {

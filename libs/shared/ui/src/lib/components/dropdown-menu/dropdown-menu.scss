@@ -1,3 +1,5 @@
+@use '@eiq/styles' as eiq;
+
 .dropdown-container {
   position: relative;
 }
@@ -34,22 +36,22 @@
   max-width: 25rem;
   height: 2.25rem;
   padding: 0.5rem;
-  background: #f5faff;
-  border: 1px solid #d0d5dd;
+  background: eiq.$brand-blue-25;
+  border: 1px solid eiq.$gray-300;
   border-radius: 0.5rem;
-  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+  box-shadow: eiq.$shadow-xs;
   cursor: pointer;
   transition: none;
 
   .trigger-icon {
-    color: #344054;
+    color: eiq.$gray-700;
     width: 1rem;
     height: 1rem;
     font-size: 1rem;
   }
 
   .trigger-text {
-    color: #344054;
+    color: eiq.$gray-700;
     font-size: 0.875rem;
     font-weight: 500;
     flex: 1;
@@ -59,13 +61,13 @@
     text-overflow: ellipsis;
 
     &.placeholder {
-      color: #667085;
+      color: eiq.$gray-500;
       font-weight: 400;
     }
   }
 
   .dropdown-arrow {
-    color: #344054;
+    color: eiq.$gray-700;
     font-size: 0.625rem;
     margin-left: auto;
     flex-shrink: 0;
@@ -77,32 +79,25 @@
   }
 
   &:hover {
-    background-color: #eff8ff;
-    border: 1px solid #98a2b3;
+    background-color: eiq.$brand-blue-50;
+    border: 1px solid eiq.$gray-400;
   }
 
   &:focus-visible {
-    outline: 0.125rem solid #1570ef;
+    outline: 0.125rem solid eiq.$brand-blue-600;
     outline-offset: 0.125rem;
   }
 
   &--open {
-    border-color: #1570ef;
+    border-color: eiq.$brand-blue-600;
     position: relative;
 
     .trigger-icon,
     .trigger-text,
     .dropdown-arrow {
-      color: #1570ef;
+      color: eiq.$brand-blue-600;
     }
   }
-}
-
-.dropdown-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  background: transparent;
 }
 
 .dropdown-menu {
@@ -112,63 +107,43 @@
   width: max-content;
   min-width: 100%;
   max-width: 25rem;
-  background: white;
-  border: 1px solid #e4e7ec;
+  background: eiq.$base-white;
+  border: 1px solid eiq.$gray-200;
   border-radius: 0.5rem;
-  box-shadow: 0px 4px 6px -2px rgba(16, 24, 40, 0.03),
-    0px 12px 16px -4px rgba(16, 24, 40, 0.08);
+  box-shadow: eiq.$shadow-sm;
   z-index: 999;
   overflow: hidden;
-}
-
-.dropdown-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1rem;
-  font-size: 0.75rem;
-  color: #667085;
-  font-weight: 500;
-  border-bottom: 1px solid #e4e7ec;
-  background: #f9fafb;
-  white-space: nowrap;
-}
-
-.header-icon {
-  font-size: 0.875rem;
-  flex-shrink: 0;
 }
 
 .search-container {
   position: relative;
   padding: 0.5rem;
-  border-bottom: 1px solid #e4e7ec;
+  border-bottom: 1px solid eiq.$gray-200;
 }
 
 .search-input {
   width: 100%;
   padding: 0.5rem 0.75rem 0.5rem 2.25rem;
-  border: 1px solid #d0d5dd;
+  border: 1px solid eiq.$gray-300;
   border-radius: 0.5rem;
   font-size: 0.875rem;
-  color: #667085;
-  background: #ffffff;
-  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+  color: eiq.$gray-500;
+  background: eiq.$base-white;
+  box-shadow: eiq.$shadow-xs;
   box-sizing: border-box;
   position: relative;
   z-index: 1;
 
   &:focus {
     outline: none;
-    border-color: #1570ef;
-    box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05),
-      0px 0px 0px 4px rgba(21, 112, 239, 0.12);
-    background: white;
+    border-color: eiq.$brand-blue-600;
+    box-shadow: eiq.$shadow-focus;
+    background: eiq.$base-white;
     z-index: 2;
   }
 
   &::placeholder {
-    color: #667085;
+    color: eiq.$gray-500;
   }
 }
 
@@ -185,16 +160,16 @@
   }
 
   &::-webkit-scrollbar-track {
-    background: #f9fafb;
+    background: eiq.$gray-50;
     border-radius: 0.25rem;
   }
 
   &::-webkit-scrollbar-thumb {
-    background: #d0d5dd;
+    background: eiq.$gray-300;
     border-radius: 0.25rem;
 
     &:hover {
-      background: #98a2b3;
+      background: eiq.$gray-400;
     }
   }
 }
@@ -217,34 +192,34 @@
   height: 2.5rem;
 
   &:hover:not(&--selected) {
-    background-color: #f9fafb;
-    border: 1px solid #98a2b3;
+    background-color: eiq.$gray-50;
+    border: 1px solid eiq.$gray-400;
     z-index: 2;
   }
 
   &:focus-visible {
-    outline: 0.125rem solid #1570ef;
+    outline: 0.125rem solid eiq.$brand-blue-600;
     outline-offset: -0.125rem;
-    background-color: #f9fafb;
+    background-color: eiq.$gray-50;
     z-index: 2;
   }
 
   &--selected {
-    background-color: #eff8ff;
+    background-color: eiq.$brand-blue-50;
 
     .option-icon {
-      color: #1570ef;
+      color: eiq.$brand-blue-600;
     }
 
     .option-label {
-      color: #1570ef;
+      color: eiq.$brand-blue-600;
       font-weight: 500;
     }
   }
 }
 
 .option-icon {
-  color: #667085;
+  color: eiq.$gray-500;
   font-size: 1rem;
   width: 1.25rem;
   display: flex;
@@ -254,7 +229,7 @@
 }
 
 .option-label {
-  color: #101828;
+  color: eiq.$gray-900;
   font-size: 0.875rem;
   flex: 1;
   line-height: 1.25rem;
@@ -265,6 +240,6 @@
 .no-results {
   padding: 1rem;
   text-align: center;
-  color: #667085;
+  color: eiq.$gray-500;
   font-size: 0.875rem;
 }

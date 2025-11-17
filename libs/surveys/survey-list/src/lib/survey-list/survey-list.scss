@@ -1,5 +1,7 @@
+@use '@eiq/styles' as eiq;
+
 .survey-list-container {
-  max-width: 1400px;
+  max-width: 87.5rem;
   margin: 0 auto;
   padding: 2rem 1.5rem;
 }
@@ -8,7 +10,7 @@
 .empty-state {
   padding: 2rem;
   text-align: center;
-  background-color: #f3f4f6;
+  background-color: eiq.$gray-100;
   border-radius: 0.5rem;
   margin-bottom: 1rem;
 }
@@ -17,100 +19,29 @@
 .empty-state p {
   font-size: 0.875rem;
   line-height: 1.25rem;
-  color: #6b7280;
+  color: eiq.$gray-500;
   margin: 0;
 }
 
 .survey-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(17.5rem, 1fr));
   gap: 1.5rem;
 }
 
-.survey-card {
-  position: relative;
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 0.5rem;
-  padding: 1.5rem;
-  transition: all 0.2s ease-in-out;
-  cursor: pointer;
-  min-height: 120px;
-  display: flex;
-  flex-direction: column;
-}
-
-.survey-card:hover {
-  border-color: #d1d5db;
-  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  transform: translateY(-2px);
-}
-
-.survey-card:focus-within {
-  outline: 2px solid #3b82f6;
-  outline-offset: 2px;
-}
-
-.card-menu-button {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: transparent;
-  border: none;
-  color: #9ca3af;
-  cursor: pointer;
-  padding: 0.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.25rem;
-  transition: all 0.2s ease-in-out;
-}
-
-.card-menu-button:hover {
-  background-color: #f3f4f6;
-  color: #6b7280;
-}
-
-.card-menu-button:focus-visible {
-  outline: 2px solid #3b82f6;
-  outline-offset: 2px;
-  background-color: #f3f4f6;
-}
-
-.card-menu-button svg {
-  display: block;
-}
-
-.survey-title {
-  font-size: 1rem;
-  line-height: 1.5rem;
-  color: #111827;
-  margin: 0 0 0.5rem 0;
-  padding-right: 1.5rem;
-}
-
-.survey-description {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  color: #6b7280;
-  margin: 0;
-  flex-grow: 1;
-}
-
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .survey-grid {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(18.75rem, 1fr));
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 75rem) {
   .survey-grid {
     gap: 1.5rem;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 40rem) {
   .survey-list-container {
     padding: 1rem;
   }
@@ -127,8 +58,8 @@
 
 .page-header {
   margin-bottom: 2rem;
-  background: white;
+  background: eiq.$base-white;
   padding: 2rem;
-  border-radius: 12px;
-  border: 1px solid #e0e0e0;
+  border-radius: 0.75rem;
+  border: 1px solid eiq.$gray-200;
 }

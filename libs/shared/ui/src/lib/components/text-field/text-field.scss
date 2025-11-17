@@ -1,69 +1,30 @@
-@use '@eiq/styles' as *;
-
-$color-text-primary: $gray-900;
-$color-text-secondary: $gray-700;
-$color-text-tertiary: $gray-500;
-$color-border-focus: $brand-blue-600;
-$color-border-focus-dark: $brand-blue-700;
-
-$transition-standard: 0.2s ease;
-$border-radius-sm: 0.1875rem;
-$border-radius-md: 0.25rem;
-
-@mixin typography-header {
-  font-size: 1.875rem;
-  line-height: 2.375rem;
-  color: $color-text-primary;
-}
-
-@mixin typography-regular {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-  font-weight: 400;
-  color: $color-text-secondary;
-}
-
-@mixin typography-list {
-  font-size: 0.875rem;
-  line-height: 0.875rem;
-  font-weight: 400;
-  color: $color-text-secondary;
-}
-
-@mixin focus-outline($color) {
-  outline: 2px solid $color;
-  outline-offset: 0.125rem;
-}
-
-@mixin button-hover-scale {
-  transform: scale(1.05);
-}
+@use '@eiq/styles' as eiq;
 
 .list-item {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   position: relative;
-  border-radius: $border-radius-md;
-  transition: background-color $transition-standard;
+  border-radius: eiq.$border-radius-md;
+  transition: background-color eiq.$transition-standard;
 
   &.type-header {
     .item-text,
     .item-input {
-      @include typography-header;
+      @include eiq.typography-header;
     }
   }
 
   &.type-regular {
     .item-text,
     .item-input {
-      @include typography-regular;
+      @include eiq.typography-regular;
     }
   }
 
   &.type-list {
     .item-text {
-      @include typography-list;
+      @include eiq.typography-list;
     }
 
     .item-input {
@@ -80,7 +41,7 @@ $border-radius-md: 0.25rem;
 .item-prefix {
   flex-shrink: 0;
   margin-top: 0.125rem;
-  color: $color-text-tertiary;
+  color: eiq.$gray-500;
   font-size: 1rem;
   line-height: 1.5;
   pointer-events: none;
@@ -89,25 +50,25 @@ $border-radius-md: 0.25rem;
 .item-text {
   flex: 1;
   padding: 0.125rem 0.25rem;
-  color: $color-text-secondary;
+  color: eiq.$gray-700;
   font-size: 0.875rem;
   line-height: 1.5;
   text-align: left;
   background: transparent;
   border: none;
-  border-radius: $border-radius-sm;
+  border-radius: eiq.$border-radius-sm;
   cursor: pointer;
-  transition: background-color $transition-standard;
+  transition: background-color eiq.$transition-standard;
 }
 
 .item-input {
   flex: 1;
   padding: 0.25rem 0.5rem;
-  color: $color-text-secondary;
+  color: eiq.$gray-700;
   font-size: 0.875rem;
   line-height: 1.5;
-  border: 2px solid $color-border-focus;
-  border-radius: $border-radius-md;
+  border: 2px solid eiq.$brand-blue-600;
+  border-radius: eiq.$border-radius-md;
 }
 
 mat-icon {
@@ -118,21 +79,21 @@ mat-icon {
 }
 
 .delete-button {
-  color: #dc2626 !important;
+  color: eiq.$red-600;
   opacity: 0;
 
   &:hover {
-    background-color: #fef2f2 !important;
-    color: #b91c1c !important;
+    background-color: eiq.$red-50;
+    color: eiq.$red-700;
     transform: scale(1.1);
   }
 }
 
 .save-button {
-  color: #16a34a !important;
+  color: eiq.$green-600;
 
   &:hover {
-    background-color: #f0fdf4 !important;
-    color: #15803d !important;
+    background-color: eiq.$green-50;
+    color: eiq.$green-700;
   }
 }
