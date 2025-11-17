@@ -24,7 +24,7 @@
           <eiq-dropdown-menu
             [options]="questionTypeOptions"
             [selected]="questionControl.get('questionType')?.value"
-            [searchPlaceholder]="'Search question types'"
+            [searchPlaceholder]="'Search'"
             [ariaLabel]="'Select question type for question ' + getQuestionNumber(i)"
             (optionSelected)="changeQuestionType(i, $event)"
           />

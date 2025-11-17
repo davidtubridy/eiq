@@ -1,82 +1,98 @@
-# Eiq
+# Empathy IQ
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+[Empathy IQ](https://empathy-iq-c9a90.firebaseapp.com/surveys)
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
+## Solution Overview
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+This project uses **NX** to manage an integrated monorepo Angular application and shared libraries. The architecture follows domain-driven design.
 
-## Finish your CI setup
+### Project Structure
 
-[Click here to finish setting up your workspace!](https://cloud.nx.app/connect/BBJICwC9uJ)
+```
+eiq/
+├── apps/
+│   ├── eiq/                  # Main app
+│   ├── eiq-e2e/              # E2E tests(TODO)
+│
+│
+├── libs/                    # Shared libraries
+   ├── shared/               # Common shared components/models
+   │   ├── models/           # Data models
+   │   └── ui/               # Reusable UI components
+   │
+   └── surveys/              # Survey domain
+       ├── data-access/      # API services
+       ├── survey-list/      # Survey list feature
+       └── survey-notepad/   # Survey notepad feature
+```
 
+## CI/CD
 
-## Run tasks
+The project uses **GitHub Actions** for continuous integration and continuous deployment with the following automated workflow:
 
-To run the dev server for your app, use:
+- **On Pull Requests**: Builds, tests and linting
+- **On Push to Main**: Deploys the application to Firebase [Empathy IQ](https://empathy-iq-c9a90.firebaseapp.com/surveys)
+
+## Runing the application locally
+
+To run the dev server for your app:
+
+First update apps/eiq/project.json process.env values
+
+- Required :
+  - `X_API_KEY` - Application API key
+  - `API_URL` - Backend endpoint
+
+```sh
+npx npm install
+```
 
 ```sh
 npx nx serve eiq
 ```
 
-To create a production bundle:
+## Runing tests
 
 ```sh
-npx nx build eiq
+npx nx run-many --all --target=test
 ```
 
-To see all available targets to run for a project, run:
+## Assumptions/Decisions
 
-```sh
-npx nx show project eiq
-```
+- Created a simple design for the list of surveys. Hitting create survey just creates a generic survey and refreshes the page. It would ideally navigate to the survey.
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+- I attempted to use no libraries for the design or icons but eventually used mat-icons to speed things up. Which has lead to there being some inconsistencies in the icons used.
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+- I ended up adding the functionality to delete items and questions as I feel this is a need to have for a product like this.
 
-## Add new projects
+- For the dropdown options. I assumed that the difference between single and multiple was that a user can only select a single item in the list when they would see it in the survey. And they can select multiple for multiple. For single line input I assumed that it was just a text box input. Swapping between single line and everything else changes from a list of options to a text box.
+- I assumed the randomize options did not change the order of the items in the list. But only used for when a user received the actual survey that the questions will be in a random order.
 
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
+## Suggestions
 
-Use the plugin's generator to create new projects.
+- The search bar in the dropdown may be unnecessary if there are only 4 options.
+- Dialog component when clicking on add question which will allow you to select the question type and options before creating the question.
+- Ability to re-order questions and options.
+- Ability to delete items and questions.
+- Button for adding question choices.
+- Endpoint to delete notebooks
+- Question copy functionality.
+- Survey preview where you can get a preview of exactly what the user will see when they receive their survey.
+- Depending on how many questions can be added to a notebook. Questions could be wrapped in an expansion panel if there are going to be a lot of questions.
 
-To generate a new application, use:
+## Improvements I would make if I had more time
 
-```sh
-npx nx g @nx/angular:app demo
-```
-
-To generate a new library, use:
-
-```sh
-npx nx g @nx/angular:lib mylib
-```
-
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
-
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Install Nx Console
-
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+- Styling inconsistencies with Figma.
+- Use the same icons as in Figma
+- Split out common SCSS and create a structured approach to styling components.
+- E2E Tests.
+- Error Handling
+- Common Loading/Error placeholder components.
+- Saving Indicator
+- The survey-questions component has grown larger than expected so I wuold split it into multiple components.
+- Fix any issues reported on Lighthouse.
+- Added Transloco for translation.
+- Improved design for the survey list page and header.
+- Shared utils library and somewhere to store common const values.
+- Investigate using a lightweight signal store for keeping track of a notebooks state.
+- Clear navigation when going from a survey to the surver list.
