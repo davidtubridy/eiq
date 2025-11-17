@@ -1,1 +1,1 @@
-export * from './lib/survey-service';
+export * from './lib/survey';

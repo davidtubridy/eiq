@@ -1,8 +1,8 @@
 export default {
-  displayName: 'survey-details',
+  displayName: 'survey-notepad',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../../coverage/libs/surveys/survey-details',
+  coverageDirectory: '../../../coverage/libs/surveys/survey-notepad',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

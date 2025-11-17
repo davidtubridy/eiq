@@ -23,7 +23,12 @@
         "styles": [
           "apps/eiq/src/styles.scss",
           "libs/shared/ui/src/lib/styles/index.scss"
-        ]
+        ],
+        "define": {
+          "process.env.NODE_ENV": "'development'",
+          "process.env.API_URL": "''",
+          "process.env.X_API_KEY": "''"
+        }
       },
       "configurations": {
         "production": {
@@ -39,7 +44,12 @@
               "maximumError": "8kb"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "define": {
+            "process.env.NODE_ENV": "'production'",
+            "process.env.API_URL": "'PROD_API_URL'",
+            "process.env.X_API_KEY": "'X_API_KEY'"
+          }
         },
         "development": {
           "optimization": false,

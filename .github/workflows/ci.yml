@@ -34,6 +34,15 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps
 
+      - name: Inject Production Secrets
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          sed -i "s|'API_URL'|'${{ secrets.API_URL }}'|g" apps/eiq/project.json
+          sed -i "s|X_API_KEY|${{ secrets.X_API_KEY }}|g" apps/eiq/project.json
+        env:
+          PROD_API_URL: ${{ secrets.API_URL }}
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+
       # Prepend any command with "nx-cloud record --" to record its logs to Nx Cloud
       # - run: npx nx-cloud record -- echo Hello World
       # When you enable task distribution, run the e2e-ci task instead of e2e

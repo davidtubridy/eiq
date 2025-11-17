@@ -1,0 +1,41 @@
+<div class="survey-container">
+  @if (loading()) {
+  <div class="loading-state">
+    <p class="loading-message">Loading survey...</p>
+  </div>
+  } @else if (surveyForm(); as form) {
+  <div class="survey-content">
+    <div class="survey-header">
+      <div class="header-content">
+        <eiq-text-field
+          [text]="form.get('title')?.value"
+          [isEditing]="isEditingTitle()"
+          [isSelected]="false"
+          [canDelete]="false"
+          [ariaLabel]="'Edit survey title: ' + form.get('title')?.value"
+          (startEdit)="startEditingTitle()"
+          (saveEdit)="saveTitle($event)"
+          (cancelEdit)="cancelEditingTitle()"
+          [type]="'header'"
+        />
+
+        <eiq-text-field
+          [text]="form.get('description')?.value || 'Add a description...'"
+          [isEditing]="isEditingDescription()"
+          [isSelected]="false"
+          [canDelete]="false"
+          [ariaLabel]="'Edit survey description: ' + (form.get('description')?.value || 'Add a description')"
+          (startEdit)="startEditingDescription()"
+          (saveEdit)="saveDescription($event)"
+          (cancelEdit)="cancelEditingDescription()"
+          [type]="'regular'"
+        />
+      </div>
+    </div>
+
+    @if (surveyData(); as survey) {
+    <eiq-survey-questions [surveyForm]="form" [surveyData]="survey" />
+    }
+  </div>
+  }
+</div>

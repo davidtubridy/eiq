@@ -1,0 +1,90 @@
+<div class="dropdown-container">
+  <button
+    type="button"
+    class="dropdown-trigger"
+    [class.dropdown-trigger--open]="isOpen()"
+    (click)="toggle()"
+    (keydown)="handleTriggerKeydown($event)"
+    [attr.aria-expanded]="isOpen()"
+    [attr.aria-label]="ariaLabel() || 'Dropdown menu'"
+  >
+    @if (selectedOption(); as option) { @if (option.icon) {
+    <mat-icon class="trigger-icon" aria-hidden="true"
+      >{{ option.icon }}</mat-icon
+    >
+    }
+    <span class="trigger-text">{{ option.label }}</span>
+    } @else {
+    <span class="trigger-text placeholder">{{ searchPlaceholder() }}</span>
+    }
+
+    <span
+      class="dropdown-arrow"
+      [class.dropdown-arrow--rotated]="isOpen()"
+      aria-hidden="true"
+    >
+      <mat-icon [style.color]="isOpen() ? '#175CD3' : '#193154'">
+        keyboard_arrow_down
+      </mat-icon>
+    </span>
+  </button>
+
+  @if (isOpen()) {
+  <div
+    class="dropdown-menu"
+    role="menu"
+    [attr.aria-label]="ariaLabel() || 'Options menu'"
+  >
+    <div class="search-container" role="presentation">
+      <mat-icon class="search-box-icon" [style.color]="'#193154'">
+        search
+      </mat-icon>
+      <input
+        type="text"
+        class="search-input"
+        [placeholder]="searchPlaceholder()"
+        [value]="searchQuery()"
+        (input)="updateSearchQuery($any($event.target).value)"
+        [attr.aria-label]="searchPlaceholder() || 'Search options'"
+        autocomplete="off"
+      />
+      <svg
+        class="search-box-icon-end"
+        xmlns="http://www.w3.org/2000/svg"
+        height="20px"
+        viewBox="0 -960 960 960"
+        width="20px"
+        fill="#193154"
+      >
+        <path
+          d="M216-216v72q-29.7 0-50.85-21.15Q144-186.3 144-216h72Zm-72-78v-72h72v72h-72Zm0-150v-72h72v72h-72Zm0-150v-72h72v72h-72Zm72-150h-72q0-29.7 21.15-50.85Q186.3-816 216-816v72Zm78 600v-72h72v72h-72Zm0-600v-72h72v72h-72Zm150 600v-72h72v72h-72Zm0-600v-72h72v72h-72Zm150 600v-72h72v72h-72Zm0-600v-72h72v72h-72Zm150 528h72q0 29.7-21.15 50.85Q773.7-144 744-144v-72Zm0-78v-72h72v72h-72Zm0-150v-72h72v72h-72Zm0-150v-72h72v72h-72Zm0-150v-72q29.7 0 50.85 21.15Q816-773.7 816-744h-72Z"
+        />
+      </svg>
+    </div>
+
+    <div class="options-container" role="presentation">
+      @for (option of filteredOptions(); track option.value) {
+      <button
+        type="button"
+        class="dropdown-option"
+        [class.dropdown-option--selected]="isSelected(option)"
+        (click)="selectOption(option)"
+        role="menuitem"
+        [attr.aria-label]="option.label + (isSelected(option) ? ' (currently selected)' : '')"
+      >
+        @if (option.icon) {
+        <mat-icon class="option-icon" aria-hidden="true"
+          >{{ option.icon }}</mat-icon
+        >
+        }
+        <span class="option-label">{{ option.label }}</span>
+      </button>
+      } @empty {
+      <div class="no-results" role="status" aria-live="polite">
+        No results found
+      </div>
+      }
+    </div>
+  </div>
+  }
+</div>

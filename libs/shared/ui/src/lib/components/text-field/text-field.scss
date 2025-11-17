@@ -1,0 +1,138 @@
+@use '@eiq/styles' as *;
+
+$color-text-primary: $gray-900;
+$color-text-secondary: $gray-700;
+$color-text-tertiary: $gray-500;
+$color-border-focus: $brand-blue-600;
+$color-border-focus-dark: $brand-blue-700;
+
+$transition-standard: 0.2s ease;
+$border-radius-sm: 0.1875rem;
+$border-radius-md: 0.25rem;
+
+@mixin typography-header {
+  font-size: 1.875rem;
+  line-height: 2.375rem;
+  color: $color-text-primary;
+}
+
+@mixin typography-regular {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 400;
+  color: $color-text-secondary;
+}
+
+@mixin typography-list {
+  font-size: 0.875rem;
+  line-height: 0.875rem;
+  font-weight: 400;
+  color: $color-text-secondary;
+}
+
+@mixin focus-outline($color) {
+  outline: 2px solid $color;
+  outline-offset: 0.125rem;
+}
+
+@mixin button-hover-scale {
+  transform: scale(1.05);
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  border-radius: $border-radius-md;
+  transition: background-color $transition-standard;
+
+  &.type-header {
+    .item-text,
+    .item-input {
+      @include typography-header;
+    }
+  }
+
+  &.type-regular {
+    .item-text,
+    .item-input {
+      @include typography-regular;
+    }
+  }
+
+  &.type-list {
+    .item-text {
+      @include typography-list;
+    }
+
+    .item-input {
+      font-size: 1.125rem;
+      line-height: 0.875rem;
+    }
+  }
+
+  &:hover .delete-button {
+    opacity: 1;
+  }
+}
+
+.item-prefix {
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+  color: $color-text-tertiary;
+  font-size: 1rem;
+  line-height: 1.5;
+  pointer-events: none;
+}
+
+.item-text {
+  flex: 1;
+  padding: 0.125rem 0.25rem;
+  color: $color-text-secondary;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  text-align: left;
+  background: transparent;
+  border: none;
+  border-radius: $border-radius-sm;
+  cursor: pointer;
+  transition: background-color $transition-standard;
+}
+
+.item-input {
+  flex: 1;
+  padding: 0.25rem 0.5rem;
+  color: $color-text-secondary;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border: 2px solid $color-border-focus;
+  border-radius: $border-radius-md;
+}
+
+mat-icon {
+  font-size: 1.25rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  line-height: 1.25rem;
+}
+
+.delete-button {
+  color: #dc2626 !important;
+  opacity: 0;
+
+  &:hover {
+    background-color: #fef2f2 !important;
+    color: #b91c1c !important;
+    transform: scale(1.1);
+  }
+}
+
+.save-button {
+  color: #16a34a !important;
+
+  &:hover {
+    background-color: #f0fdf4 !important;
+    color: #15803d !important;
+  }
+}

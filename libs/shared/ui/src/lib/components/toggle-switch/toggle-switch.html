@@ -1,0 +1,13 @@
+<label class="toggle-container">
+  <span class="toggle-label">{{ label() }}</span>
+  <span class="toggle-switch">
+    <input
+      type="checkbox"
+      [checked]="checked()"
+      [disabled]="disabled()"
+      (change)="handleChange()"
+      [attr.aria-label]="ariaLabel() || label()"
+    />
+    <span class="slider" aria-hidden="true"></span>
+  </span>
+</label>

@@ -17,9 +17,10 @@
     "paths": {
       "@eiq/ui": ["libs/shared/ui/src/index.ts"],
       "@eiq/models": ["libs/shared/models/src/index.ts"],
+      "@eiq/styles": ["libs/shared/ui/src/lib/styles/index.scss"],
       "@eiq/data-access": ["libs/surveys/data-access/src/index.ts"],
       "@eiq/survey-list": ["libs/surveys/survey-list/src/index.ts"],
-      "@eiq/survey-details": ["libs/surveys/survey-details/src/index.ts"]
+      "@eiq/survey-notepad": ["libs/surveys/survey-notepad/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
