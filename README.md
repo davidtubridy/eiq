@@ -33,7 +33,7 @@ The project uses **GitHub Actions** for continuous integration and continuous de
 - **On Pull Requests**: Builds, tests and linting
 - **On Push to Main**: Deploys the application to Firebase [Empathy IQ](https://empathy-iq-c9a90.firebaseapp.com/surveys)
 
-## Runing the application locally
+## Running the application locally
 
 To run the dev server for your app:
 
@@ -51,7 +51,7 @@ npx npm install
 npx nx serve eiq
 ```
 
-## Runing tests
+## Running tests
 
 ```sh
 npx nx run-many --all --target=test
@@ -61,7 +61,7 @@ npx nx run-many --all --target=test
 
 - Created a simple design for the list of surveys. Hitting create survey just creates a generic survey and refreshes the page. It would ideally navigate to the survey.
 
-- I attempted to use no libraries for the design or icons but eventually used mat-icons to speed things up. Which has lead to there being some inconsistencies in the icons used.
+- I attempted to use no libraries for the design or icons but eventually used mat-icons to speed things up. Which has led to there being some inconsistencies in the icons used.
 
 - I ended up adding the functionality to delete items and questions as I feel this is a need to have for a product like this.
 
@@ -89,10 +89,10 @@ npx nx run-many --all --target=test
 - Error Handling
 - Common Loading/Error placeholder components.
 - Saving Indicator
-- The survey-questions component has grown larger than expected so I wuold split it into multiple components.
+- The survey-questions component has grown larger than expected so I would split it into multiple components.
 - Fix any issues reported on Lighthouse.
-- Added Transloco for translation.
+- Add Transloco for translation.
 - Improved design for the survey list page and header.
 - Shared utils library and somewhere to store common const values.
 - Investigate using a lightweight signal store for keeping track of a notebooks state.
-- Clear navigation when going from a survey to the surver list.
+- Clearer navigation when going from a survey to the survey list.
