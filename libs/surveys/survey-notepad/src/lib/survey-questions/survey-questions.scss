@@ -138,10 +138,13 @@
   align-items: center;
   gap: 0.5rem;
   color: eiq.$brand-blue-600;
-  font-size: 0.875rem;
-  font-weight: 500;
   border-radius: 0.375rem;
   transition: all eiq.$transition-fast;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  padding: 0.625rem;
+  width: fit-content;
 
   &:hover {
     background: eiq.$brand-blue-25;
