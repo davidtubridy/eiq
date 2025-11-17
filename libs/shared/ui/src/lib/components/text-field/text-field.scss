@@ -12,12 +12,14 @@
     .item-text,
     .item-input {
       @include eiq.typography-header;
+      padding-left: 0;
     }
   }
 
   &.type-regular {
     .item-text,
     .item-input {
+      padding-left: 0.063rem;
       @include eiq.typography-regular;
     }
   }
