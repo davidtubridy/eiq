@@ -57,6 +57,12 @@ npx nx serve eiq
 npx nx run-many --all --target=test
 ```
 
+## Why is this functionality important?
+
+As people collaborate to create surveys, it is crucial for them to have somewhere to list the questions and options. It also gives them the ability to collaborate asynchronously and review questions and options.
+
+This notebook feature approach provides a way for users to quickly create, change and discuss surveys rather than creating them on survey tools which could take up a lot more time.
+
 ## Assumptions/Decisions
 
 - Created a simple design for the list of surveys. Hitting create survey just creates a generic survey and refreshes the page. It would ideally navigate to the survey.
