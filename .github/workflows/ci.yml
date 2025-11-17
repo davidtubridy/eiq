@@ -38,9 +38,9 @@ jobs:
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
           sed -i "s|'API_URL'|'${{ secrets.API_URL }}'|g" apps/eiq/project.json
-          sed -i "s|X_API_KEY|${{ secrets.X_API_KEY }}|g" apps/eiq/project.json
+          sed -i "s|'X_API_KEY'|'${{ secrets.X_API_KEY }}'|g" apps/eiq/project.json
         env:
-          PROD_API_URL: ${{ secrets.API_URL }}
+          PI_URL: ${{ secrets.API_URL }}
           X_API_KEY: ${{ secrets.X_API_KEY }}
 
       # Prepend any command with "nx-cloud record --" to record its logs to Nx Cloud

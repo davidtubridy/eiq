@@ -18,4 +18,17 @@ describe('ToggleSwitch', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should emit true when clicked while unchecked', () => {
+    fixture.componentRef.setInput('checked', false);
+    fixture.detectChanges();
+
+    const spy = jest.fn();
+    component.checkedChange.subscribe(spy);
+
+    const inputEl = fixture.nativeElement.querySelector('input');
+    inputEl.click();
+
+    expect(spy).toHaveBeenCalledWith(true);
+  });
 });
