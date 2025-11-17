@@ -66,7 +66,7 @@ export class SurveyQuestions {
     {
       value: QuestionType.SingleChoice,
       label: 'Single choice',
-      icon: 'radio_button_checked',
+      icon: 'check_circle',
     },
     {
       value: QuestionType.MultipleChoice,

@@ -1,5 +1,12 @@
 @use './tokens' as eiq;
 
+@mixin typography-sm-semibold {
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: eiq.$brand-blue-700;
+}
+
 @mixin typography-header {
   font-size: 1.875rem;
   line-height: 2.375rem;
