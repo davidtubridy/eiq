@@ -22,7 +22,7 @@
 }
 
 .survey-content {
-  border: 1px solid eiq.$gray-200;
+  border: 2px solid eiq.$gray-300;
   border-radius: eiq.$border-radius-lg;
   padding: 1.875rem;
   display: flex;
@@ -33,7 +33,6 @@
 .survey-header {
   background: eiq.$base-white;
   border-radius: eiq.$border-radius-lg;
-  padding: 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;

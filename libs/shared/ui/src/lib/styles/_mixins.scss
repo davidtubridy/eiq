@@ -4,6 +4,7 @@
   font-size: 1.875rem;
   line-height: 2.375rem;
   color: eiq.$gray-900;
+  font-weight: 500;
 }
 
 @mixin typography-regular {
@@ -14,10 +15,17 @@
 }
 
 @mixin typography-list {
-  font-size: 0.875rem;
-  line-height: 0.875rem;
+  color: eiq.$gray-600;
   font-weight: 400;
-  color: eiq.$gray-700;
+  font-size: 1.125rem;
+  line-height: 0.875rem;
+}
+
+@mixin typography-question {
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  color: eiq.$gray-800;
 }
 
 @mixin flex-center {

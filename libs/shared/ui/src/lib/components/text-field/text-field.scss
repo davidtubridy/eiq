@@ -12,19 +12,33 @@
     .item-text,
     .item-input {
       @include eiq.typography-header;
+      padding-left: 0;
     }
   }
 
   &.type-regular {
     .item-text,
     .item-input {
+      padding-left: 0.063rem;
       @include eiq.typography-regular;
     }
   }
 
   &.type-list {
+    height: 1.75rem;
     .item-text {
       @include eiq.typography-list;
+    }
+
+    .item-input {
+      font-size: 1.125rem;
+      line-height: 0.875rem;
+    }
+  }
+
+  &.type-question {
+    .item-text {
+      @include eiq.typography-question;
     }
 
     .item-input {

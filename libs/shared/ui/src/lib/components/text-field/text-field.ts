@@ -9,7 +9,7 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
-type EditableListItemType = 'header' | 'regular' | 'list';
+type EditableListItemType = 'header' | 'regular' | 'list' | 'question';
 
 @Component({
   selector: 'eiq-text-field',
