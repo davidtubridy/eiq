@@ -1,0 +1,47 @@
+@use './tokens' as eiq;
+
+@mixin typography-header {
+  font-size: 1.875rem;
+  line-height: 2.375rem;
+  color: eiq.$gray-900;
+}
+
+@mixin typography-regular {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 400;
+  color: eiq.$gray-700;
+}
+
+@mixin typography-list {
+  font-size: 0.875rem;
+  line-height: 0.875rem;
+  font-weight: 400;
+  color: eiq.$gray-700;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin button-reset {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+
+@mixin focus-ring {
+  outline: 2px solid eiq.$brand-blue-600;
+  outline-offset: 2px;
+}

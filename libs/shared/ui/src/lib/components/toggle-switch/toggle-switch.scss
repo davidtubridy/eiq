@@ -1,4 +1,4 @@
-@import '@eiq/styles';
+@use '@eiq/styles' as eiq;
 
 .toggle-container {
   display: flex;
@@ -17,7 +17,7 @@
   font-weight: 500;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  color: $gray-600;
+  color: eiq.$gray-600;
 }
 
 .toggle-switch {
@@ -41,7 +41,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: $gray-100;
+  background-color: eiq.$gray-100;
   transition: 0.3s;
   border-radius: 0.75rem;
   padding: 0.125rem;
@@ -54,13 +54,13 @@
   width: 1rem;
   left: 0.125rem;
   bottom: 0.125rem;
-  background-color: $base-white;
+  background-color: eiq.$base-white;
   transition: 0.3s;
   border-radius: 50%;
 }
 
 input:checked + .slider {
-  background-color: $brand-blue-600;
+  background-color: eiq.$brand-blue-600;
 }
 
 input:checked + .slider::before {
@@ -68,7 +68,7 @@ input:checked + .slider::before {
 }
 
 input:focus-visible + .slider {
-  outline: 2px solid $brand-blue-600;
+  outline: 2px solid eiq.$brand-blue-600;
   outline-offset: 0.125rem;
 }
 

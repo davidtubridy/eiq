@@ -1,3 +1,5 @@
+@use '@eiq/styles' as eiq;
+
 .toolbar {
   display: flex;
   align-items: center;
@@ -9,26 +11,26 @@
 
 .search-box {
   flex: 1;
-  min-width: 250px;
-  max-width: 400px;
+  min-width: 15.625rem;
+  max-width: 2.5rem;
   position: relative;
 }
 
 .search-box-input {
   width: 100%;
   padding: 0.75rem 1rem 0.75rem 2.5rem;
-  border: 1px solid #d0d0d0;
-  border-radius: 8px;
+  border: 1px solid eiq.$gray-300;
+  border-radius: 0.5rem;
   font-size: 0.95rem;
-  transition: all 0.2s;
-  background: white;
-  color: #1a1a1a;
+  transition: all eiq.$transition-standard;
+  background: eiq.$base-white;
+  color: eiq.$gray-900;
 }
 
 .search-box-input:focus {
   outline: none;
-  border-color: #2b7de9;
-  box-shadow: 0 0 0 3px rgba(43, 125, 233, 0.1);
+  border-color: eiq.$brand-blue-600;
+  box-shadow: eiq.$shadow-focus;
 }
 
 .search-box-icon {
@@ -36,7 +38,7 @@
   left: 0.875rem;
   top: 50%;
   transform: translateY(-50%);
-  color: #666666;
+  color: eiq.$gray-600;
 }
 
 .toolbar-actions {
@@ -48,27 +50,27 @@
 .create-survey-button {
   padding: 0.75rem 1.5rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   font-size: 0.95rem;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all eiq.$transition-standard;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
 }
 
 .create-survey-button {
-  background: #2b7de9;
-  color: white;
+  background: eiq.$brand-blue-600;
+  color: eiq.$base-white;
 }
 
 .create-survey-button:hover {
-  background: #1a6ad6;
+  background: eiq.$brand-blue-700;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(43, 125, 233, 0.3);
+  box-shadow: eiq.$shadow-sm;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .toolbar {
     flex-direction: column;
     align-items: stretch;
