@@ -21,6 +21,15 @@
   &:focus-within {
     border: 1px solid eiq.$brand-blue-600;
   }
+
+  .action-button {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  &:hover .action-button {
+    opacity: 1;
+  }
 }
 
 .question-header {

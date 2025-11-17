@@ -34,16 +34,17 @@
           role="group"
           aria-label="Question actions"
         >
+          @if(canDeleteQuestion()){
           <button
             type="button"
             class="action-button action-button-danger"
-            [disabled]="!canDeleteQuestion()"
             (click)="deleteQuestion(i)"
             [attr.aria-label]="'Delete question ' + getQuestionNumber(i)"
             title="Delete question"
           >
             <mat-icon>delete</mat-icon>
           </button>
+          }
         </div>
       </div>
 
