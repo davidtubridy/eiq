@@ -36,15 +36,13 @@
     [attr.aria-label]="ariaLabel() || 'Options menu'"
   >
     <div class="search-container" role="presentation">
-      <mat-icon class="search-box-icon" [style.color]="'#193154'">
-        search
-      </mat-icon>
+      <mat-icon class="search-box-icon"> search </mat-icon>
       <input
         type="text"
         class="search-input"
         [placeholder]="searchPlaceholder()"
         [value]="searchQuery()"
-        (input)="updateSearchQuery($any($event.target).value)"
+        (input)="updateSearchQuery($event.target.value)"
         [attr.aria-label]="searchPlaceholder() || 'Search options'"
         autocomplete="off"
       />

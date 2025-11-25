@@ -1,25 +1,26 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   computed,
   DestroyRef,
   inject,
-  OnInit,
   signal,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { SurveyService } from '@eiq/data-access';
-import { Survey } from '@eiq/models';
+import { Survey, QuestionType } from '@eiq/models';
 import { SurveyCard } from '../survey-card/survey-card';
 import { SurveyToolbar } from '../survey-toolbar/survey-toolbar';
-import { catchError, throwError } from 'rxjs';
+import { catchError, switchMap, throwError } from 'rxjs';
 
 @Component({
   selector: 'eiq-survey-list',
   imports: [SurveyCard, SurveyToolbar],
   templateUrl: './survey-list.html',
   styleUrl: './survey-list.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SurveyList implements OnInit {
+export class SurveyList {
   private surveyService = inject(SurveyService);
   private destroyRef = inject(DestroyRef);
   private allSurveys = signal<Survey[]>([]);
@@ -42,7 +43,7 @@ export class SurveyList implements OnInit {
     });
   });
 
-  ngOnInit() {
+  constructor() {
     this.loadSurveys();
   }
 
@@ -65,5 +66,39 @@ export class SurveyList implements OnInit {
 
   public filterSurveys(filter: string) {
     this.filterText.set(filter);
+  }
+
+  protected handleCreateSurvey() {
+    const newSurvey: Omit<Survey, 'id'> = {
+      title: 'Untitled Survey',
+      description: 'Description',
+      questions: [
+        {
+          questionId: 1,
+          questionText: 'Question 1',
+          mandatoryInd: false,
+          questionType: QuestionType.SingleChoice,
+          options: ['Option 1', 'Option 2'],
+          randomizeOptionsInd: false,
+          cards: [],
+          programmerNotes: '',
+          instructions: '',
+        },
+      ],
+    };
+
+    this.surveyService
+      .createSurvey(newSurvey)
+      .pipe(
+        switchMap(() => this.surveyService.getSurveys()),
+        takeUntilDestroyed(this.destroyRef),
+        catchError((err) => {
+          this.error.set(err.message);
+          return throwError(() => err);
+        })
+      )
+      .subscribe((surveys) => {
+        this.allSurveys.set(surveys);
+      });
   }
 }

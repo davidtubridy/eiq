@@ -4,7 +4,10 @@
     <p class="page-subtitle">Create and manage survey notebooks</p>
   </div>
   @if(!loading()){
-  <eiq-survey-toolbar (surveyFilter)="filterSurveys($event)" />
+  <eiq-survey-toolbar
+    (surveyFilter)="filterSurveys($event)"
+    (surveyCreate)="handleCreateSurvey()"
+  />
   } @if (loading()) {
   <div class="loading-state" role="status" aria-live="polite">
     <p>Loading surveys...</p>
