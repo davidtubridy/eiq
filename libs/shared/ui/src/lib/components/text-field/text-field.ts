@@ -5,6 +5,8 @@ import {
   output,
   signal,
   effect,
+  ElementRef,
+  inject,
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -17,8 +19,13 @@ type EditableListItemType = 'header' | 'regular' | 'list' | 'question';
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './text-field.html',
   styleUrl: './text-field.scss',
+  host: {
+    '(document:mousedown)': 'handleClickOutside($event)',
+  },
 })
 export class TextField {
+  private elementRef = inject(ElementRef);
+
   text = input.required<string>();
   type = input<EditableListItemType>('regular');
   isSelected = input<boolean>(false);
@@ -57,6 +64,17 @@ export class TextField {
     if (event.key === 'Enter' || event.key === 'Escape') {
       event.preventDefault();
       this.handleSave();
+    }
+  }
+
+  handleClickOutside(event: MouseEvent) {
+    if (this.isEditing()) {
+      const clickedInside = this.elementRef.nativeElement.contains(
+        event.target
+      );
+      if (!clickedInside) {
+        this.handleSave();
+      }
     }
   }
 }
