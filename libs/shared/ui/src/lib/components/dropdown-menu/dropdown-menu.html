@@ -44,7 +44,7 @@
         class="search-input"
         [placeholder]="searchPlaceholder()"
         [value]="searchQuery()"
-        (input)="updateSearchQuery($any($event.target).value)"
+        (input)="updateSearchQuery($event.target.value)"
         [attr.aria-label]="searchPlaceholder() || 'Search options'"
         autocomplete="off"
       />
