@@ -11,10 +11,8 @@
   <p class="card-description">{{ survey().description }}</p>
   <div class="card-footer">
     <div class="question">
-      <span>
-        <span class="question-count">{{ survey().questions.length }}</span>
-        {{ survey().questions.length === 1 ? 'question': 'questions' }}
-      </span>
+      <span class="question-count">{{ survey().questions.length }}</span>
+      {{ survey().questions.length === 1 ? 'question': 'questions' }}
     </div>
   </div>
 </div>

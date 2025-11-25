@@ -1,4 +1,9 @@
-import { Component, inject, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  input,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Survey } from '@eiq/models';
 import { Router } from '@angular/router';
@@ -6,6 +11,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'eiq-survey-card',
   imports: [CommonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './survey-card.html',
   styleUrl: './survey-card.scss',
 })
